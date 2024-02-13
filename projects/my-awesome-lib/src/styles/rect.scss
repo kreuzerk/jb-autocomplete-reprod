@@ -1,0 +1,7 @@
+$prefix: 'my-company-';
+
+.#{$prefix}rect {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}

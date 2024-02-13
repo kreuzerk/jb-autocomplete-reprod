@@ -1,27 +1,19 @@
 # JbAutocompleteReprod
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+This is a reproduction repo to illustrate missing autocomplete function when using SCSS classes in Angular.
 
-## Development server
+## Setup
+Simple Angular multi project workspace with a library and an application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- The library contains a `rect.scss` file which uses some SCSS functionality to build up a `my-company-rect` class.
+- The build process builds this file under `dist/my-awesome-lib/main.css`.
 
-## Code scaffolding
+## Steps to reproduce
+1. npm ci
+2. npm run build
+3. Open `my-aweseome-lib.component.ts` and try to delete the `my-company-rect` class and retype it. There are no autocomplete suggestions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Things we tried - Ideas - possible solutions
+1. We tried to unmark dist as not excluded. But this was not possible and as Jan pointed out it would probably introduce some other problems (imports would get suggested twice).
+2. It would work if the IDE could understand the dynamic classes build with SCSS.
+3. Current workaround is to build the CSS top level to another directory named `dev-helpers` which is not excluded.

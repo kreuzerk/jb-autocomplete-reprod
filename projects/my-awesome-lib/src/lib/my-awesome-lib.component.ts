@@ -5,9 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      my-awesome-lib works!
-    </p>
+    <div class="my-company-rect">
+        An awesome rectangle
+    </div>
   `,
   styles: ``
 })

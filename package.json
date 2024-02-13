@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --project my-awesome-lib && npm run build:styles:main",
+    "build:styles:main": "sass --load-path node_modules --style compressed projects/my-awesome-lib/src/styles/rect.scss dist/my-awesome-lib/main.css",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
